@@ -1,4 +1,6 @@
 const electron = require('electron')
+var mongo = require('mongodb');
+var MongoClient = require('mongodb').MongoClient;
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
@@ -14,7 +16,39 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600})
+  var url_mongo = "mongodb://localhost:27017/pomodoro";
+  // MongoClient.connect(url_mongo, function(err, db) {
+  //   if (err) throw err;
+  //   console.log("Database created!");
+  //   db.close();
+  // });
+  // MongoClient.connect(url_mongo, function(err, db) {
+  // if (err) throw err;
+  // db.createCollection("events", function(err, res) {
+  //   if (err) throw err;
+  //   console.log("Table created!");
+  //   db.close();
+  // });
+  // MongoClient.connect(url_mongo, function(err, db) {
+  // if (err) throw err;
+  // var start =Date();
+  // var duration=25*60*1000;
+  // var myobj = { start:start, type: "work_time",duration:duration };
+  // db.collection("event").insertOne(myobj, function(err, res) {
+  //   if (err) throw err;
+  //   console.log("1 record inserted");
+  //   db.close();
+  // });
+// });
 
+// MongoClient.connect(url_mongo, function(err, db) {
+//   if (err) throw err;
+//   db.collection("event").findOne({}, function(err, result) {
+//     if (err) throw err;
+//     console.log(result);
+//     db.close();
+//   });
+// });
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
