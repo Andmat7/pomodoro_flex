@@ -1,36 +1,5 @@
-
-const path = require('path');
-
-const options = [
-  {
-    title: 'Basic Notification',
-    body: 'Short message part',
-  },
-  {
-    title: 'Content-Image Notification',
-    body: 'Short message plus a custom content image',
-    icon: path.join(__dirname, 'icon.png'),
-  },
-];
-
-function doNotify(evt) {
-/* eslint-disable no-new */
-  if (evt.srcElement.id === 'basic') {
-    new Notification(options[0].title, options[0]);
-  } else if (evt.srcElement.id === 'image') {
-    new Notification(options[1].title, options[1]);
-  }
-}
-
-// HELPER FUNCTIONS ============================================
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('basic').addEventListener('click', doNotify);
-  document.getElementById('image').addEventListener('click', doNotify);
-});
-
 let bigTime = 1499; // time in seconds
 let mode = 'normal';
-
 
 let mins;
 let secs;
@@ -41,7 +10,6 @@ let countdownID;
 const minutes = document.getElementById('minutes');
 const seconds = document.getElementById('seconds');
 const message = document.getElementById('message');
-
 
 // register the buttons
 const start = document.getElementById('start');
@@ -59,27 +27,16 @@ function counter() {
   minutes.innerHTML = (mins < 10 ? '0' : '') + mins;
   seconds.innerHTML = (secs < 10 ? '0' : '') + secs;
 
-  // handle the animations
-  // const divisor = 300;
-
-  // const percent = secs / divisor;
-  // const resut - divisor - 100;
-
-  // change the message at 00
-  if (secs === 0) {
-    message.innerHTML = 'change out the messages';
-  }
-
   // switch modes if timer ends
   if (bigTime === 0) {
-    const notification = new Notification('Notification title', {
-      icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
-      body: 'Hey there! You\'ve been notified!',
-    });
+    // const notification = new Notification('Notification title', {
+    //   icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
+    //   body: 'Hey there! You\'ve been notified!',
+    // });
 
-    notification.onclick = () => {
-      window.open('http://stackoverflow.com/a/13328397/1269037');
-    };
+    // notification.onclick = () => {
+    //   window.open('http://stackoverflow.com/a/13328397/1269037');
+    // };
 
     if (mode === 'normal') {
       // cooldown is 5min
@@ -92,9 +49,6 @@ function counter() {
 
       minutes.innerHTML = '25';
       seconds.innerHTML = '00';
-
-      /* eslint-env es6 */
-      document.body.style.background = '# + $(color)';
 
       // show start button
       start.style.display = 'block';
@@ -115,7 +69,7 @@ function counter() {
 function startTimer() {
   // start timer
   // var OneSecond=1000;
-  const OneSecond = 1;
+  const OneSecond = 1000;
   countdownID = setInterval(counter, OneSecond);
 
   // show message
@@ -134,7 +88,6 @@ function stopTimer() {
 
   // stop timer
   clearInterval(countdownID);
-
   // show reset button
   start.style.display = 'none';
   stop.style.display = 'none';
@@ -145,17 +98,14 @@ function stopTimer() {
 function resetTimer() {
   // reset big time
   bigTime = 1499;
-
   // change message
   message.innerHTML = 'keep up the good work';
-
   // show start button
   start.style.display = 'block';
   stop.style.display = 'none';
   reset.style.display = 'none';
 }
+
 start.addEventListener('click', startTimer, false);
-
 stop.addEventListener('click', stopTimer, false);
-
 reset.addEventListener('click', resetTimer, false);

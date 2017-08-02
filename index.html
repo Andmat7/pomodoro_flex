@@ -3,41 +3,43 @@
   <head>
     <meta charset="UTF-8">
     <title>Pomodoro Flex</title>
+    <style>
+      @import url("//fonts.googleapis.com/css?family=Open+Sans:400,700,600");
+      body {
+        background: #0D5B85;
+        font-family: "Open Sans";
+        font-weight: 400;
+        padding-top: 30px;
+        text-align: center;
+      }
+      #message {
+        color: #DDD;
+        font-size: 50px;
+        margin-bottom: 20px;
+      }
+      #timer {
+        color: #DDD;
+        font-size: 200px;
+        margin-bottom: 40px;
+      }
+      #buttons button {
+        background: #002852;
+        border: none;
+        color: #DDD;
+        cursor: pointer;
+        padding: 15px 30px;
+        margin: 0 auto;
+        border-radius: 4px;
+      }
+      #stop,
+      #reset {
+        display: none;
+      }
+    </style>
   </head>
-  <style>
-    @import url("//fonts.googleapis.com/css?family=Open+Sans:400,700,600");
-    body {
-      background: #0D5B85;
-      font-family: "Open Sans";
-      font-weight: 400;
-      padding-top: 30px;
-      text-align: center;
-    }
-    #message {
-      color: #DDD;
-      font-size: 50px;
-      margin-bottom: 20px;
-    }
-    #timer {
-      color: #DDD;
-      font-size: 200px;
-      margin-bottom: 40px;
-    }
-    #buttons button {
-      background: #002852;
-      border: none;
-      color: #DDD;
-      cursor: pointer;
-      padding: 15px 30px;
-      margin: 0 auto;
-      border-radius: 4px;
-    }
-    #stop,
-    #reset {
-      display: none;
-    }
-  </style>
+
   <body>
+
     <div class="timer">
       <div id="message">Let's Get Started</div>
 
@@ -55,20 +57,19 @@
     </div>
 
     <div id="test"></div>
-  </div>
-  <div class="sample">
-    <button id="basic">Basic Notification</button>
-    <span>Basic notification: default icon, title, and message. </span>
-  </div>
-  <div class="sample">
-    <button id="image">Image Notification</button>
-    <span>Image notification: icon, title, image, and message.(Only available on OS X Yosemite)</span>
-  </div>
-  <script src="window.js"></script>
-</body>
+    <div class="sample">
+      <button id="basic">Basic Notification</button>
+      <span>Basic notification: default icon, title, and message. </span>
+    </div>
+    <div class="sample">
+      <button id="image">Image Notification</button>
+      <span>Image notification: icon, title, image, and message.(Only available on OS X Yosemite)</span>
+    </div>
+    <script>
+      //require('./src/renderer.js')
+      const Pomodoro =require('./src/pomodoro.js')
+      const Pomodoro_flex = new Pomodoro();
+    </script>
+  </body>
 
-<script>
-  // You can also require other files to run in this process
-require('./src/renderer.js')
-</script>
 </html>
